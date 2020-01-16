@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import jquery from 'jquery'
+
 require('bootstrap')
 require('jquery.easing')
 
