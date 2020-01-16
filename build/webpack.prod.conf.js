@@ -13,22 +13,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = require('../config/prod.env')
 
-const PrerenderSpaPlugin = require('prerender-spa-plugin')
-
-
-const webpackConfig = merge(baseWebpackConfig, {
-  // ...
-  plugins: [
-    // ...
-    // add following to the bottom of 'plugins' array
-    new PrerenderSpaPlugin(
-      // Path to compiled app
-      path.join(__dirname, '../dist'),
-      // List of endpoints you wish to prerender
-      [ '/' ]
-    )
-  ]
-
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -49,14 +33,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
-    }),
+    sourceMap:true,
+    cache: true,
+    parallel: true,
+    uglifyOptions:{
+      ecma:8
+    }
+  }),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),

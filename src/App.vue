@@ -1,3 +1,11 @@
+
+<template>
+  <div class="main-wrapper">
+    <h1>{{ title }}</h1>
+  </div>
+</template>
+
+
 <script>
 export default {
   data () {
@@ -6,7 +14,7 @@ export default {
     }
   },
   mounted () {
-    const $ = this.jquery
+  const $ = this.jquery
     this.$nextTick(() => {
       // our custom jQuery code goes here
     })
